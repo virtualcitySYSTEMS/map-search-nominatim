@@ -1,0 +1,6 @@
+{
+  "name": "search-nominatim",
+  "url": "https://nominatim.openstreetmap.org/search",
+  "countrycode": "de",
+  "limit": 20
+}
