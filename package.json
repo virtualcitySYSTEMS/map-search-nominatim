@@ -1,5 +1,5 @@
 {
-  "name": "search-nominatim",
+  "name": "@vcmap/search-nominatim",
   "version": "1.0.0",
   "description": "A search plugin for OSM Nominatim",
   "type": "module",

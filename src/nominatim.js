@@ -3,11 +3,12 @@ import {
   AddressBalloonFeatureInfoView,
   featureInfoViewSymbol,
 } from '@vcmap/ui';
+import { name } from '../package.json';
 
 /**
  *
  * @param {Object} item - response item from the search request
- * @returns {ResultItem}
+ * @returns {import("@vcmap/ui").ResultItem}
  */
 function createResultItem(item) {
   const data = parseGeoJSON(item.geojson);
@@ -34,7 +35,6 @@ function createResultItem(item) {
 
 /**
  * @typedef {Object} NominatimSearchOptions
- * @property {string} [name="Nominatim"]
  * @property {string} [url="https://nominatim.openstreetmap.org/search"]
  * @property {string|undefined} city
  * @property {string|undefined} state
@@ -46,7 +46,7 @@ function createResultItem(item) {
 
 /**
  * @class
- * @implements {SearchImpl}
+ * @implements {import("@vcmap/ui").SearchImpl}
  */
 class Nominatim {
   /**
@@ -54,7 +54,6 @@ class Nominatim {
    */
   static getDefaultOptions() {
     return {
-      name: 'Nominatim',
       url: 'https://nominatim.openstreetmap.org/search',
       city: undefined,
       state: undefined,
@@ -73,8 +72,8 @@ class Nominatim {
      */
     const defaultOptions = Nominatim.getDefaultOptions();
 
-    /** @type {string|null} */
-    this.name = options.name ?? defaultOptions.name;
+    /** @type {string} */
+    this._name = name;
 
     /** @type {string|Object} */
     this.url = options.url ?? defaultOptions.url;
@@ -98,6 +97,14 @@ class Nominatim {
      * @private
      */
     this._controller = new AbortController();
+  }
+
+  /**
+   * @type {string}
+   * @readonly
+   */
+  get name() {
+    return this._name;
   }
 
   /**
