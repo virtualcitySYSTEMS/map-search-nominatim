@@ -1,4 +1,4 @@
-import { version, name } from '../package.json';
+import { version, name, mapVersion } from '../package.json';
 import Nominatim from './nominatim.js';
 import SearchNominatimEditor from './SearchNominatimEditor.vue';
 
@@ -17,6 +17,9 @@ export default function searchNominatim(config) {
     },
     get version() {
       return version;
+    },
+    get mapVersion() {
+      return mapVersion;
     },
     /**
      * @param {import("@vcmap/ui").VcsUiApp} vcsUiApp
