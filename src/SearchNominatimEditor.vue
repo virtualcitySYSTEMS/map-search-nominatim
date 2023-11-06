@@ -3,7 +3,7 @@
     <v-container class="py-0 px-1">
       <v-row
         no-gutters
-        v-for="key in ['url', 'state', 'city', 'countryCode']"
+        v-for="key in ['url', 'state', 'city', 'countrycode']"
         :key="key"
       >
         <v-col>
