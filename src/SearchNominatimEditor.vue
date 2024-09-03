@@ -7,23 +7,18 @@
         :key="key"
       >
         <v-col>
-          <VcsLabel :html-for="key" dense>
+          <VcsLabel :html-for="key">
             {{ $t(`searchNominatim.${key}`) }}
           </VcsLabel>
         </v-col>
         <v-col>
-          <VcsTextField
-            :id="key"
-            clearable
-            dense
-            v-model.trim="localConfig[key]"
-          />
+          <VcsTextField :id="key" clearable v-model.trim="localConfig[key]" />
         </v-col>
       </v-row>
       <!-- XXX extent -->
       <v-row no-gutters>
         <v-col>
-          <VcsLabel html-for="limit" dense>
+          <VcsLabel html-for="limit">
             {{ $t('searchNominatim.limit') }}
           </VcsLabel>
         </v-col>
@@ -31,7 +26,6 @@
           <VcsTextField
             id="limit"
             clearable
-            dense
             type="number"
             v-model.number="localConfig.limit"
           />
@@ -42,7 +36,7 @@
 </template>
 
 <script>
-  import { VContainer, VRow, VCol } from 'vuetify/lib';
+  import { VContainer, VRow, VCol } from 'vuetify/components';
   import { VcsLabel, VcsTextField, AbstractConfigEditor } from '@vcmap/ui';
   import { ref } from 'vue';
   import Nominatim from './nominatim.js';

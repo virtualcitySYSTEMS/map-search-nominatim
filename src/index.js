@@ -9,9 +9,10 @@ import SearchNominatimEditor from './SearchNominatimEditor.vue';
  * @template {Object} S
  */
 export default function searchNominatim(config) {
+  let instance;
+  let app;
+
   return {
-    _instance: null,
-    _app: null,
     get name() {
       return name;
     },
@@ -25,21 +26,28 @@ export default function searchNominatim(config) {
      * @param {import("@vcmap/ui").VcsUiApp} vcsUiApp
      */
     initialize(vcsUiApp) {
-      this._instance = new Nominatim(config);
-      this._app = vcsUiApp;
-      vcsUiApp.search.add(this._instance, name);
+      instance = new Nominatim(config);
+      vcsUiApp.search.add(instance, name);
+      app = vcsUiApp;
     },
     /**
      * @returns {NominatimSearchOptions}
      */
     toJSON() {
-      return this._instance.toJSON();
+      return instance?.toJSON() || {};
     },
     getDefaultOptions() {
       return Nominatim.getDefaultOptions();
     },
     getConfigEditors() {
-      return [{ component: SearchNominatimEditor }];
+      return [
+        {
+          component: SearchNominatimEditor,
+          infoUrlCallback: app?.getHelpUrlCallback(
+            '/components/plugins/searchToolConfig.html#id_searchNominatimConfig_',
+          ),
+        },
+      ];
     },
     i18n: {
       de: {
