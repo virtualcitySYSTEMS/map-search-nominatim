@@ -50,25 +50,29 @@ export default function searchNominatim(config) {
       ];
     },
     i18n: {
-      de: {
-        searchNominatim: {
-          name: 'Name',
-          url: 'URL zu Nominatim',
-          state: 'Bundesland',
-          city: 'Stadt',
-          countrycode: 'Ländercode',
-          limit: 'Maximale Anzahl Resultate',
-          bbox: 'Bounding Box',
-        },
-      },
       en: {
         searchNominatim: {
+          general: 'General',
           name: 'Name',
           url: 'URL to Nominatim',
           state: 'State',
           city: 'City',
           countrycode: 'Country Code',
           limit: 'Maximum number of results',
+          icon: 'Results icon',
+          bbox: 'Bounding Box',
+        },
+      },
+      de: {
+        searchNominatim: {
+          general: 'Allgemein',
+          name: 'Name',
+          url: 'URL zu Nominatim',
+          state: 'Bundesland',
+          city: 'Stadt',
+          countrycode: 'Ländercode',
+          limit: 'Maximale Anzahl Resultate',
+          icon: 'Ergebnissymbol',
           bbox: 'Bounding Box',
         },
       },

@@ -1,6 +1,7 @@
 # v2.0.0
 
 - plugin updated to vue3 and Map 6.0
+- adds a configurable icon to the result items
 
 # v1.0.2
 

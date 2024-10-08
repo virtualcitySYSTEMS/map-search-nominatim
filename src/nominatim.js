@@ -8,9 +8,10 @@ import { name } from '../package.json';
 /**
  *
  * @param {Object} item - response item from the search request
+ * @param {string} icon - icon to prepend to item result
  * @returns {import("@vcmap/ui").ResultItem}
  */
-function createResultItem(item) {
+function createResultItem(item, icon) {
   const data = parseGeoJSON(item.geojson);
   const feature = data.features[0];
   feature.setProperties(item.address);
@@ -30,6 +31,7 @@ function createResultItem(item) {
   return {
     title,
     feature,
+    icon,
   };
 }
 
@@ -41,6 +43,7 @@ function createResultItem(item) {
  * @property {string|undefined} [countrycode="de"]
  * @property {import("@vcmap/core").Extent.Options|undefined} extent
  * @property {number|undefined} [limit=20]
+ * @property {string} [icon="mdi-circle-double"]
  * @api
  */
 
@@ -60,6 +63,7 @@ class Nominatim {
       countrycode: 'de',
       extent: undefined,
       limit: 20,
+      icon: 'mdi-circle-double',
     };
   }
 
@@ -92,6 +96,9 @@ class Nominatim {
 
     /** @type {number} */
     this.limit = options.limit ?? defaultOptions.limit;
+
+    /** @type {string} */
+    this.icon = options.icon ?? defaultOptions.icon;
     /**
      * @type {AbortController}
      * @private
@@ -142,7 +149,7 @@ class Nominatim {
     const { signal } = this._controller.signal;
     const response = await fetch(url, { signal });
     const results = await response.json();
-    return results.map(createResultItem);
+    return results.map((result) => createResultItem(result, this.icon));
   }
 
   abort() {
@@ -173,6 +180,9 @@ class Nominatim {
     }
     if (this.limit !== defaultOptions.limit) {
       config.limit = this.limit;
+    }
+    if (this.icon !== defaultOptions.icon) {
+      config.icon = this.icon;
     }
 
     return config;

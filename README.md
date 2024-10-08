@@ -14,3 +14,4 @@ This plugin adds a search implementation using [Nominatim](https://nominatim.ope
 | countrycode | string                         | `undefined`                                  | Country code of a country to restrict the search to                   |
 | extent      | import("@vcmap/core").Extent\  | `undefined`                                  | Extent to restrict the search to                                      |
 | limit       | number                         | `20`                                         | Limit the maximum number of returned results. Cannot be more than 40. |
+| icon        | string                         | `mdi-circle-double`                          | The prepended icon of the result items.                               |
