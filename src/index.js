@@ -43,8 +43,9 @@ export default function searchNominatim(config) {
       return [
         {
           component: SearchNominatimEditor,
+          title: 'searchNominatim.configEditorTitle',
           infoUrlCallback: app?.getHelpUrlCallback(
-            '/components/plugins/searchToolConfig.html#id_searchNominatimConfig_',
+            '/components/plugins/searchToolConfig.html#id_searchNominatimConfig',
           ),
         },
       ];
@@ -61,6 +62,7 @@ export default function searchNominatim(config) {
           limit: 'Maximum number of results',
           icon: 'Results icon',
           bbox: 'Bounding Box',
+          configEditorTitle: 'Search Nominatim Editor',
         },
       },
       de: {
@@ -74,6 +76,7 @@ export default function searchNominatim(config) {
           limit: 'Maximale Anzahl Resultate',
           icon: 'Ergebnissymbol',
           bbox: 'Bounding Box',
+          configEditorTitle: 'Nominatim Suche Editor',
         },
       },
     },

@@ -64,7 +64,6 @@
 
   export default {
     name: 'SearchNominatimEditor',
-    title: 'Search Nominatim Editor',
     components: {
       VContainer,
       VRow,
