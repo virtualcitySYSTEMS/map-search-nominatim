@@ -46,6 +46,7 @@ export default function searchNominatim(config) {
           title: 'searchNominatim.configEditorTitle',
           infoUrlCallback: app?.getHelpUrlCallback(
             '/components/plugins/searchToolConfig.html#id_searchNominatimConfig',
+            'app-configurator',
           ),
         },
       ];
